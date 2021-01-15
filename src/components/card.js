@@ -64,17 +64,7 @@ const cardAppender = (selector) => {
     .get("https://lambda-times-api.herokuapp.com/articles")
     .then((res) => {
       const articles = res.data.articles;
-      const bootstrap = articles.bootstrap;
-      const javascript = articles.javascript;
-      const jquery = articles.jquery;
-      const node = articles.node;
-      const technology = articles.technology;
-      const articlesArr = [bootstrap, javascript, jquery, node, technology];
-      console.log(articlesArr);
-      console.log(res.data);
-      articlesArr.forEach((article) => {
-        cardContainer.appendChild(article);
-      });
+      console.log(articles);
     })
     .catch((err) => {
       console.log(err);

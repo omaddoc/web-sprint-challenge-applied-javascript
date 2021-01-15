@@ -28,7 +28,7 @@ const Header = (title, date, temp) => {
   header.appendChild(temperature);
 
   // debugger;
-  console.log(header);
+  // console.log(header);
   return header;
 };
 
