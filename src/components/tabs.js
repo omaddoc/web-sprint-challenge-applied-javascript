@@ -17,10 +17,11 @@ const Tabs = (topics) => {
   const topicsContainer = document.createElement("div");
   topics.forEach((topic) => {
     let tab = document.createElement("div");
-    tab.classList("tab");
+    tab.classList.add("tab");
     tab.textContent = topic;
     topicsContainer.appendChild(tab);
   });
+  console.log(topicsContainer);
   return topicsContainer;
 };
 
@@ -33,6 +34,17 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
   const tabsContainer = document.querySelector(selector);
+  axios
+    .get("https://lambda-times-api.herokuapp.com/topics")
+    .then((res) => {
+      const topicsData = res.data.topics;
+      // topicsData.console.log(res.data.topics);
+      const tabsHeader = document.querySelector(selector);
+      tabsHeader.appendChild(Tabs(topicsData));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export { Tabs, tabsAppender };
